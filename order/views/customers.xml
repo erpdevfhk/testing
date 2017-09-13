@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Customers view file for styling of customers.py model
+  Created By: Farhan Javed - 12/09/2017
+  Xml tags once explained will be not be explained again
+ -->
+<odoo>
+    <data>
+        <!-- This is the screen shown when a new record is to be created -->
+        <record model="ir.ui.view" id="customer_form">
+            <field name="name">Customers</field>
+            <field name="model">order.customers</field>  <!-- the model which is linked to this view -->
+            <field name="arch" type="xml">
+                <form string="Customer">
+                    <sheet>
+                        <h1> <!-- the main field for the input -->
+                            <field name="customer_id" placeholder="Customer ID" string="Customer ID:" />
+                        </h1>
+                        <notebook> <!-- rest of the fields of customers table. Each field is input in a <page> tag.
+                                    Just a styling option -->
+                            <page string="Enter Customer Name:">
+                                <field name="customer_name"/>
+                            </page>
+                            <page string="Enter Customer Type:">
+                                <field name="customer_type"/>
+                            </page>
+                            <page string="Enter HeadQuarter Location:">
+                                <field name="headquarter_loc"/>
+                            </page>
+                            <page string="Enter HeadQuarter Phone No:">
+                                <field name="headquarter_phone_no"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!-- This is the view which shows all the records in the database of that module. Opened when module clicked in the main menu -->
+        <record model="ir.ui.view" id="customers_record_tree">
+            <field name="name">Customers</field>
+            <field name="model">order.customers</field>
+            <field name="arch" type="xml">
+                <tree string="Customers"> <!-- This is the main table view. Each field corresponds to a column in the database -->
+                    <field name="customer_id"/>
+                    <field name="customer_name"/>
+                    <field name="customer_type"/>
+                    <field name="headquarter_loc"/>
+                    <field name="headquarter_phone_no"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_customers">
+            <field name="name">Customers</field>
+            <field name="res_model">order.customers</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="Customers" id="menu_order" parent="menu_general"
+                  action="action_customers" sequence="1"/>
+
+    </data>
+</odoo>

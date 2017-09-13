@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Employees view file for styling of employees.py model
+  Created By: Farhan Javed - 12/09/2017
+  Xml tags once explained will be not be explained again
+ -->
+<odoo>
+    <data>
+        <!-- This is the screen shown when a new record is to be created -->
+        <record model="ir.ui.view" id="employee_form">
+            <field name="name">Employees</field>
+            <field name="model">order.employees</field>  <!-- the model which is linked to this view -->
+            <field name="arch" type="xml">
+                <form string="Employee">
+                    <sheet>
+                        <h1> <!-- the main field for the input -->
+                            <field name="employee_id" placeholder="Employee ID" string="Employee ID" />
+                        </h1>
+                        <notebook> <!-- rest of the fields of customers table. Each field is input in a <page> tag.
+                                        Just a styling option -->
+                            <page string="Enter Employee's Name:">
+                                <field name="employee_name"/>
+                            </page>
+                            <page string="Enter Employee's Date Of Birth:">
+                                <field name="employee_dob"/>
+                            </page>
+                            <page string="Enter Employee's Passport No:">
+                                <field name="employee_passport_no"/>
+                            </page>
+                            <page string="Enter Employee's Visa No">
+                                <field name="employee_visa_no"/>
+                            </page>
+                            <page string="Enter Employee's gender">
+                                <field name="employee_sex"/>
+                            </page>
+                            <page string="Enter Employee's Phone No:">
+                                <field name="employee_contact_no"/>
+                            </page>
+                            <page string="Enter Employee's Address:">
+                                <field name="employee_address"/>
+                            </page>
+                            <page string="Enter Employee's Designation:">
+                                <field name="employee_designation"/>
+                            </page>
+                            <page string="Enter Employee's Driving License No:">
+                                <field name="employee_driving_license_no"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!-- This is the view which shows all the records in the database of that module. Opened when module clicked in the main menu -->
+        <record model="ir.ui.view" id="employees_record_tree">
+            <field name="name">Employees</field>
+            <field name="model">order.employees</field>
+            <field name="arch" type="xml">
+                <tree string="Employees"> <!-- This is the main table view. Each field corresponds to a column in the database -->
+                    <field name="employee_id"/>
+                    <field name="employee_name"/>
+                    <field name="employee_dob"/>
+                    <field name="employee_passport_no"/>
+                    <field name="employee_visa_no"/>
+                    <field name="employee_sex"/>
+                    <field name="employee_contact_no"/>
+                    <field name="employee_address"/>
+                    <field name="employee_designation"/>
+                    <field name="employee_driving_license_no"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- This is the action for the tree view.  -->
+        <record model="ir.actions.act_window" id="action_employees">
+            <field name="name">Employees</field>
+            <field name="res_model">order.employees</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Menu for the left side bar -->
+        <menuitem name="Employees" id="menu_order2" parent="menu_general"
+                  action="action_employees" sequence="1"/>
+
+    </data>
+</odoo>

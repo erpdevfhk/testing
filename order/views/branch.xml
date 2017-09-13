@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Branch view file for styling of branch.py model
+  Created By: Farhan Javed - 13/09/2017
+  Xml tags once explained will be not be explained again
+ -->
+<odoo>
+    <data>
+        <!-- This is the screen shown when a new record is to be created -->
+        <record model="ir.ui.view" id="branch_form">
+            <field name="name">Customer Branches</field>
+            <field name="model">order.branch</field>  <!-- the model which is linked to this view -->
+            <field name="arch" type="xml">
+                <form string="Branches">
+                    <sheet>
+                        <h1> <!-- the main field for the input -->
+                            <field name="branch_code" placeholder="Branch Code" string="Branch Code" />
+                        </h1>
+                        <notebook> <!-- rest of the fields of branch table. Each field is input in a <page> tag.
+                                        Just a styling option -->
+                            <page string="Select Customer ID:">
+                                <field name="customer_id"/>
+                            </page>
+                            <page string="Enter Address of the branch:">
+                                <field name="branch_address"/>
+                            </page>
+                            <page string="Enter Phone No of the Branch:">
+                                <field name="branch_phone_no"/>
+                            </page>
+                            <page string="Enter Amount limit of the branch:">
+                                <field name="branch_amount_limit"/>
+                            </page>
+                            <page string="Enter Perimeter limit of the branch:">
+                                <field name="branch_location_limit"/>
+                            </page>
+                            <page string="Enter maps location of the branch:">
+                                <field name="branch_maps_location"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!-- This is the view which shows all the records in the database of that module. Opened when module clicked in the main menu -->
+        <record model="ir.ui.view" id="branch_record_tree">
+            <field name="name">Customer branched</field>
+            <field name="model">order.branches</field>
+            <field name="arch" type="xml">
+                <tree string="Employees"> <!-- This is the main table view. Each field corresponds to a column in the database -->
+                    <field name="branch_code"/>
+                    <field name="customer_id"/>
+                    <field name="branch_address"/>
+                    <field name="branch_phone_no"/>
+                    <field name="branch_amount_limit"/>
+                    <field name="branch_location_limit"/>
+                    <field name="branch_maps_location"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- This is the action for the tree view.  -->
+        <record model="ir.actions.act_window" id="action_branch">
+            <field name="name">Customer Branches</field>
+            <field name="res_model">order.branch</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Menu for the left side bar -->
+        <menuitem name="Branch" id="branch_side_menu" parent="menu_general"
+                  action="action_branch" sequence="1"/>
+
+    </data>
+</odoo>

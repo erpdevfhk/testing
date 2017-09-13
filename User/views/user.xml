@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+
+		<record model="ir.ui.view" id="course_form">
+			<field name="name">Cashtronix User</field>
+			<field name="model">user.user</field>
+			<field name="arch" type="xml">
+				<form string="User">
+					<sheet>
+						<h1>
+							<!--<field name="user_id" widget="image" class="oe_avatar oe_left"/>-->
+							<field name="user_id" placeholder="UserID" string="User ID:" />
+						</h1>
+						<notebook>
+							<page string="Enter user's password">
+								<field name="password"/>
+							</page>
+							<page string="User cut off limit">
+								<field name="cutOffLimit"/>
+							</page>
+<!-- 							<page string="Sessions">
+	                                <field name="sessions">
+	                                    <tree editable="top">
+	                                        <field name="name"></field>
+	                                        <field name="start_date"></field>
+	                                    </tree>
+	                                </field>
+	                        </page> -->
+						</notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+
+		<record model="ir.ui.view" id="course_tree">
+			<field name="name">Cashtronix User Tree View</field>
+			<field name="model">user.user</field>
+			<field name="arch" type="xml">
+				<tree string="User">
+					<field name="user_id"/>
+					<field name="password" />
+                    <field name="cutOffLimit" />
+				</tree>
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="action_courses">
+			<field name="name">Cashtronix User</field>
+			<field name="res_model">user.user</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<menuitem name="Users" id="menu_courses" parent="menu_general"
+				action="action_courses" sequence="1"/>
+    </data>
+</odoo>
